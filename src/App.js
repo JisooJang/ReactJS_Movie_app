@@ -2,49 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Movie from './Movie';
 
-/*
-const movieTitles = [
-  "Eternal Sunshine",
-  "10 Things I Hate About You",
-  "Begin Again",
-  "Bohemian Rhapsody",
-  "Sing Street"
-]
-
-const movieImages = [
-  "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg",
-  "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg",
-  "https://img.rasset.ie/00090f2b-500.jpg",
-  "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000",
-  "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
-];
-// 컴포넌트1. 전체 영화 리스트 컴포넌트.
-*/
-
-const movies = [
-  {
-    title: "Eternal Sunshine",
-    poster: "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg"
-  },
-  {
-    title: "10 Things I Hate About You",
-    poster: "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg"
-  },
-  {
-    title: "Begin Again",
-    poster: "https://img.rasset.ie/00090f2b-500.jpg"
-  },
-  {
-    title: "Bohemian Rhapsody",
-    poster: "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000"
-  },
-  {
-    title: "Sing Street",
-    poster: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
-  }
-];
-// 컴포넌트2. 영화정보를 담은 객체 리스트
-
 class App extends Component {
 
 // Component rendering 순서 : componentWillMount() -> render() -> componentDidMount()
@@ -52,7 +9,28 @@ class App extends Component {
 // Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
 
   state = {
-    greeting: "Hello!"
+    movies: [
+      {
+        title: "Eternal Sunshine",
+        poster: "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg"
+      },
+      {
+        title: "10 Things I Hate About You",
+        poster: "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg"
+      },
+      {
+        title: "Begin Again",
+        poster: "https://img.rasset.ie/00090f2b-500.jpg"
+      },
+      {
+        title: "Bohemian Rhapsody",
+        poster: "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000"
+      },
+      {
+        title: "Sing Street",
+        poster: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
+      }
+    ]
   }
 
   componentWillMount() {
@@ -63,12 +41,19 @@ class App extends Component {
     console.log('did mount');
     setTimeout(() => {
       this.setState({
-        greeting: "Hello again!"
+        movies: [
+          {
+            title: "School of Rock",
+            poster: "https://www.unilad.co.uk/wp-content/uploads/2015/11/o-SCHOOL-OF-ROCK-facebook1-1200x800.jpg"
+          },
+          ...this.state.movies
+        ]
       });
-    }, 5000);
+    }, 2000);
   }
 
   // state값은 직접적으로 변경하면 안되고, setState 메소드를 통해 간접 변경해야함.
+  // setState는 우리가 보고있는 브라우저 전체 페이지를 새로고침하지 않고 단지 state변화가 있는 그 컴포넌트만 새로고침합니다.
   // state값이 변경되면, render()이 재동작한다. 새로운 state값과 함께
 
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
@@ -76,8 +61,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {this.state.greeting} 
-        {movies.map((movies, index) => {   
+        {this.state.movies.map((movies, index) => {   
           return <Movie title={movies.title} poster={movies.poster} key={index} />
         })}
       </div>
