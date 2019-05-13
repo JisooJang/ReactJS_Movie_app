@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# ReactJS_Movie_app
+practicing ReactJS by developing reviewing Movie app
+
+본 레파지토리는 '노마드코더' 유튜버의 'reactJS로 무비앱 만들기' 영상을 보고 진행한 실습&응용 코드입니다.
+
+# Youtube 링크
+https://www.youtube.com/watch?v=hKUdpaPlUc4&list=PL7jH19IHhOLOFTVD4R8FeZWkwpVi8-9Fv&index=7
+>>>>>>> c1ae1b71ae6ecb2a25012a6a0802d9cb422f1d56
