@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Movie from './Movie'
+import Movie from './Movie';
 
 /*
 const movieTitles = [
@@ -49,14 +49,15 @@ class App extends Component {
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
     return (
       <div className="App">
-        {movies.map(movies => {   
-          return <Movie title={movies.title} poster={movies.poster} />
+        {movies.map((movies, index) => {   
+          return <Movie title={movies.title} poster={movies.poster} key={index} />
         })}
       </div>
     );
   }
 }
 
+// 자식 컴포넌트에서 리스트같이 많은 양의 데이터를 다룰때, 각 컴포넌트들은 고유한 값의 'key' 속성을 추가해줘야함.
 // Array.map() 메소드는 Array의 요소 하나하나를 mapping해서 새로운 Array를 만든다. '=>' 이는 콜백 function을 축약한 표현식
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
