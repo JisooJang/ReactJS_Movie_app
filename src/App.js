@@ -46,7 +46,22 @@ const movies = [
 // 컴포넌트2. 영화정보를 담은 객체 리스트
 
 class App extends Component {
+
+// Component rendering 순서 : componentWillMount() -> render() -> componentDidMount()
+
+// Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
+
+  componentWillMount() {
+    console.log('will mount');
+  }
+
+  componentDidMount() {
+    console.log('did mount');
+  }
+
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
+    console.log('did render');
+
     return (
       <div className="App">
         {movies.map((movies, index) => {   
