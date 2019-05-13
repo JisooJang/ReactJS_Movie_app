@@ -51,19 +51,32 @@ class App extends Component {
 
 // Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
 
+  state = {
+    greeting: "Hello!"
+  }
+
   componentWillMount() {
     console.log('will mount');
   }
 
   componentDidMount() {
     console.log('did mount');
+    setTimeout(() => {
+      this.setState({
+        greeting: "Hello again!"
+      });
+    }, 5000);
   }
+
+  // state값은 직접적으로 변경하면 안되고, setState 메소드를 통해 간접 변경해야함.
+  // state값이 변경되면, render()이 재동작한다. 새로운 state값과 함께
 
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
     console.log('did render');
 
     return (
       <div className="App">
+        {this.state.greeting} 
         {movies.map((movies, index) => {   
           return <Movie title={movies.title} poster={movies.poster} key={index} />
         })}
