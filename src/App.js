@@ -9,28 +9,7 @@ class App extends Component {
 // Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
 
   state = {
-    movies: [
-      {
-        title: "Eternal Sunshine",
-        poster: "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg"
-      },
-      {
-        title: "10 Things I Hate About You",
-        poster: "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg"
-      },
-      {
-        title: "Begin Again",
-        poster: "https://img.rasset.ie/00090f2b-500.jpg"
-      },
-      {
-        title: "Bohemian Rhapsody",
-        poster: "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000"
-      },
-      {
-        title: "Sing Street",
-        poster: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
-      }
-    ]
+    
   }
 
   componentWillMount() {
@@ -43,10 +22,25 @@ class App extends Component {
       this.setState({
         movies: [
           {
-            title: "School of Rock",
-            poster: "https://www.unilad.co.uk/wp-content/uploads/2015/11/o-SCHOOL-OF-ROCK-facebook1-1200x800.jpg"
+            title: "Eternal Sunshine",
+            poster: "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg"
           },
-          ...this.state.movies
+          {
+            title: "10 Things I Hate About You",
+            poster: "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg"
+          },
+          {
+            title: "Begin Again",
+            poster: "https://img.rasset.ie/00090f2b-500.jpg"
+          },
+          {
+            title: "Bohemian Rhapsody",
+            poster: "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000"
+          },
+          {
+            title: "Sing Street",
+            poster: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
+          }
         ]
       });
     }, 2000);
@@ -56,14 +50,22 @@ class App extends Component {
   // setState는 우리가 보고있는 브라우저 전체 페이지를 새로고침하지 않고 단지 state변화가 있는 그 컴포넌트만 새로고침합니다.
   // state값이 변경되면, render()이 재동작한다. 새로운 state값과 함께
 
+  
+  // function
+  _renderMovies = () => {
+    const movies = this.state.movies.map((movies, index) => {   
+      return <Movie title={movies.title} poster={movies.poster} key={index} />
+    })
+
+    return movies;
+  }
+  
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
     console.log('did render');
 
     return (
       <div className="App">
-        {this.state.movies.map((movies, index) => {   
-          return <Movie title={movies.title} poster={movies.poster} key={index} />
-        })}
+        {this.state.movies ? this._renderMovies() : 'Loading'}
       </div>
     );
   }
