@@ -9,41 +9,15 @@ class App extends Component {
 // Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
 
   state = {
-    
-  }
 
+  }
   componentWillMount() {
     console.log('will mount');
   }
 
   componentDidMount() {
     console.log('did mount');
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          {
-            title: "Eternal Sunshine",
-            poster: "https://static01.nyt.com/images/2016/07/06/watching/eternal-sunshine-watching-recommendation/eternal-sunshine-watching-recommendation-videoSixteenByNineJumbo1600.jpg"
-          },
-          {
-            title: "10 Things I Hate About You",
-            poster: "https://cdn-images-1.medium.com/max/1330/1*81-CC8AFePhYcetE18InZA.jpeg"
-          },
-          {
-            title: "Begin Again",
-            poster: "https://img.rasset.ie/00090f2b-500.jpg"
-          },
-          {
-            title: "Bohemian Rhapsody",
-            poster: "https://pmcvariety.files.wordpress.com/2018/08/bohemian-rhapsody-3.jpg?w=1000"
-          },
-          {
-            title: "Sing Street",
-            poster: "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-236113-SING-STREET.0.0.jpg?crop=900:600&width=440"
-          }
-        ]
-      });
-    }, 2000);
+    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating'));
   }
 
   // state값은 직접적으로 변경하면 안되고, setState 메소드를 통해 간접 변경해야함.
