@@ -16,8 +16,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('did mount');
-    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating'));
+    fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    .then(response => response.json())    // fetch()가 성공적으로 끝났으면 then 문장을 실행
+    .then(json => console.log(json))
+    .catch(err => console.log(err))             // fetch()가 오류가 나면, catch 문장을 실행
   }
 
   // state값은 직접적으로 변경하면 안되고, setState 메소드를 통해 간접 변경해야함.
