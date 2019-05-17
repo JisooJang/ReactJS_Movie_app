@@ -8,18 +8,14 @@ class App extends Component {
 
 // Component Updating 순서 : componentWillReceiveProps() -> shouldComponentUpdate() -> componentWillUpdate() -> render() -> componentDidUpdate()
 
-  state = {
-
-  }
   componentWillMount() {
     console.log('will mount');
   }
 
+  state = {}
+
   componentDidMount() {
-    fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
-    .then(response => response.json())    // fetch()가 성공적으로 끝났으면 then 문장을 실행
-    .then(json => console.log(json))
-    .catch(err => console.log(err))             // fetch()가 오류가 나면, catch 문장을 실행
+    this._getMovies();
   }
 
   // state값은 직접적으로 변경하면 안되고, setState 메소드를 통해 간접 변경해야함.
@@ -29,11 +25,28 @@ class App extends Component {
   
   // function
   _renderMovies = () => {
-    const movies = this.state.movies.map((movies, index) => {   
-      return <Movie title={movies.title} poster={movies.poster} key={index} />
+    const movies = this.state.movies.map((movies) => {  
+      console.log(movies) 
+      return <Movie title={movies.title} poster={movies.large_cover_image} key={movies.id} />
     })
 
     return movies;
+  }
+
+  // async function
+  // callApi function으로부터 모든 데이터를 수신 완료하고 수행 
+  _getMovies = async () => {  
+    const movies = await this._callApi();   
+    this.setState({
+      movies
+    });
+  }
+
+  _callApi = () => {
+    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    .then(response => response.json())    // fetch()가 성공적으로 끝났으면 then 문장을 실행
+    .then(json => json.data.movies)   // _getMovies의 const movies 변수에 최종으로 전달(return)되는 데이터 
+    .catch(err => console.log(err))             // fetch()가 오류가 나면, catch 문장을 실행
   }
   
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
