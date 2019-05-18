@@ -25,13 +25,14 @@ class App extends Component {
   
   // function
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie) => {  
+    const movies = this.state.movies.map((movie) => {
       return <Movie 
         title={movie.title}
         poster={movie.medium_cover_image} 
         key={movie.id} 
         genres={movie.genres}
         synopsis={movie.synopsis}
+        rating={movie.rating}
       />
     })
 
@@ -57,6 +58,7 @@ class App extends Component {
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
     console.log('did render');
     const { movies } = this.state;
+    console.log(movies);
     return (
       <div className={movies ? "App" : "App--loading"}>
         {this.state.movies ? this._renderMovies() : 'Loading'}
