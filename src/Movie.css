@@ -39,6 +39,7 @@
 }
 
 .Movie .Movie__Synopsis {
+    margin-top: 20px;
     text-overflow: ellipsis;
     color:#B4B5BD;
     overflow: hidden;
@@ -52,7 +53,7 @@
 }
 
 .Movie .Movie_Rating {
-    
+
 }
 
 @media screen and (min-width:320px) and (max-width:667px){
@@ -61,7 +62,7 @@
     }
 }
 
-@media screen and (min-width:320px) and (max-width:667px) and (orientation: portrait){
+@media screen and (min-width:320px) and (max-width:667px) and (orientation: portrait) {
     .Movie{
         width:100%;
         flex-direction: column;
