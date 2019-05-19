@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { css } from '@emotion/core';
+import { ClipLoader } from "react-spinners";
 import Movie from './Movie';
 
 class App extends Component {
@@ -54,6 +56,30 @@ class App extends Component {
     .then(json => json.data.movies)   // _getMovies의 const movies 변수에 최종으로 전달(return)되는 데이터 
     .catch(err => console.log(err))             // fetch()가 오류가 나면, catch 문장을 실행
   }
+
+  _loadingMovies = () => {
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    align: center;
+    margin-left: 20px;
+    `;
+    
+    return (
+      <div className="App--loading2">
+        <ClipLoader
+          css={override}
+          sizeUnit={"px"}
+          size={40}
+          color={'#36D7B7'}
+          loading={this.state.loading}
+          />
+          <p>Loading...</p>
+      </div>
+    )
+     
+  }
   
   render() {  // Movie 컴포넌트를 불러온후 렌더링.
     console.log('did render');
@@ -61,7 +87,7 @@ class App extends Component {
     console.log(movies);
     return (
       <div className={movies ? "App" : "App--loading"}>
-        {this.state.movies ? this._renderMovies() : 'Loading'}
+        {this.state.movies ? this._renderMovies() : this._loadingMovies()}
       </div>
     );
   }
