@@ -7,5 +7,5 @@ practicing ReactJS by developing reviewing Movie app
 https://www.youtube.com/watch?v=hKUdpaPlUc4&list=PL7jH19IHhOLOFTVD4R8FeZWkwpVi8-9Fv&index=7
 
 
-# github-pages (응용 결과 화면)
+# github-pages (Demo page)
 https://jisoojang.github.io/ReactJS_Movie_app/index
