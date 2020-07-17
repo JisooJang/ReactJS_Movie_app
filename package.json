@@ -9,6 +9,8 @@
     "react-dom": "^16.8.3",
     "react-lines-ellipsis": "^0.14.1",
     "react-scripts": "2.1.5",
+    "react-spinners": "^0.5.4",
+    "react-spinners-kit": "^1.9.0",
     "react-star-ratings": "^2.3.0"
   },
   "scripts": {
