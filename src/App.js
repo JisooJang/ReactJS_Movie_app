@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   _callApi = () => {
-    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
+    return fetch('https://cors-anywhere.herokuapp.com/https://yts.am/api/v2/list_movies.json?sort_by=download_count')
     .then(response => response.json())    // fetch()가 성공적으로 끝났으면 then 문장을 실행
     .then(json => json.data.movies)   // _getMovies의 const movies 변수에 최종으로 전달(return)되는 데이터 
     .catch(err => console.log(err))             // fetch()가 오류가 나면, catch 문장을 실행
